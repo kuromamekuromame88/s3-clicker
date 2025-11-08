@@ -15,7 +15,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 他ブランチへpushするため履歴を取得
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}  # ← ここで token を明示
 
       - name: Set up Python
         uses: actions/setup-python@v5
