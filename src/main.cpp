@@ -6,6 +6,7 @@ USBHIDMouse Mouse;
 
 void setup(){
   Mouse.begin();
+  USB.begin();
 }
 
 void loop(){
