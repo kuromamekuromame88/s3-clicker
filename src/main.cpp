@@ -1,14 +1,9 @@
-/**
- * This example turns the ESP32 into a Bluetooth LE mouse that scrolls down every 2 seconds.
- */
 #include <Arduino.h>
 #include <BleMouse.h>
 
-BleMouse bleMouse;
+BleMouse bleMouse("ESP32-S3 Mouse", "ESP32", 100);
 
 void setup() {
-  USBSerial.begin(115200);
-  USBSerial.println("BLEマウスを開始しました");
   bleMouse.begin();
 }
 
