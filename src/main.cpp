@@ -11,4 +11,5 @@ void loop() {
   if(bleMouse.isConnected()) {
     bleMouse.click(MOUSE_LEFT);
   }
+  delay(1);
 }
