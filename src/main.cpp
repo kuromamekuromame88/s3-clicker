@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include <Mouse.h>
+#include <USBHIDMouse.h>
 
 int setup(void){
   Mouse.begin();
