@@ -1,27 +1,19 @@
-#include <Arduino.h>
-#include <USB.h>
-#include <USBHIDMouse.h>
-#include <USBHID.h>  // ← TinyUSBDevice 用
+/**
+ * This example turns the ESP32 into a Bluetooth LE mouse that scrolls down every 2 seconds.
+ */
+#include <BleMouse.h>
 
-USBHIDMouse Mouse;
+BleMouse bleMouse;
 
 void setup() {
-  USB.begin();
-  Mouse.begin();
-
-  // ★ TinyUSB がホストにマウントされるまで待つ
-  while (!TinyUSBDevice.mounted()) {
-    delay(10);
-  }
-
-  // 念のため余裕
-  delay(300);
+  Serial.begin(115200);
+  Serial.println("BLEマウスを開始しました");
+  bleMouse.begin();
 }
 
 void loop() {
-  Mouse.press(MOUSE_LEFT);
-  delay(50);
-
-  Mouse.release(MOUSE_LEFT);
-  delay(500);
+  if(bleMouse.isConnected()) {
+    bleMouse.click(MOUSE_LEFT);
+  }
+  delay(2000);
 }
