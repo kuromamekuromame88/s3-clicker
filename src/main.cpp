@@ -1,10 +1,10 @@
 #include <Arduino.h>
 #include <USBHIDMouse.h>
 
-int setup(void){
+void setup(){
   Mouse.begin();
 }
 
-int loop(void){
+void loop(){
   Mouse.click(MOUSE_LEFT);
 }
