@@ -1,24 +1,26 @@
 #include <Arduino.h>
-#include "USB.h"
-#include "USBHIDMouse.h"
+#include <USB.h>
+#include <USBHIDMouse.h>
 
 USBHIDMouse Mouse;
 
 void setup() {
-  // USB初期化
   USB.begin();
   Mouse.begin();
 
-  // PC側がUSBデバイスを認識するまで少し待つ
-  delay(2000);
+  // ★ USBホスト（PC）がマウントするまで待つ
+  while (!USBDevice.mounted()) {
+    delay(10);
+  }
+
+  // 念のため少し余裕を持つ
+  delay(500);
 }
 
 void loop() {
-  // 左クリック押下
   Mouse.press(MOUSE_LEFT);
-  delay(10);                 // 押している時間
+  delay(50);
 
-  // 左クリック解放
   Mouse.release(MOUSE_LEFT);
-  delay(500);                // 次のクリックまでの間隔
+  delay(500);
 }
